@@ -1,3 +1,9 @@
-<p>
-  messages works!
-</p>
+<!--The template binds directly to the component's messageService-->
+<div *ngIf="messageService.messages.length">
+  <h2>Messages</h2>
+  <button class="clear"
+          (click)="messageService.clear()">Clear</button> 
+  <ul>
+    <li *ngFor='let message of messageService.messages'>{{message}}</li>
+  </ul>
+</div>
