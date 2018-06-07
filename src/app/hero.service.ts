@@ -38,8 +38,16 @@ export class HeroService {
       // TO DO: send the error to remote logging infrastructure
       console.error(error);     // log to console instead
 
+      // TODO: better job of transforming error for user consumption
+      this.log(`${operation} is failed: ${error.message}`);
+
       // Let the app keep running by returning an empty result.
       return of(result as T);
     };
+  }
+
+  /* Log a HeroService message with the MessageService */
+  private log(message: string) {
+    this.messageService.add('Hero service:' + message);
   }
 }
