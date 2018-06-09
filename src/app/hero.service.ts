@@ -20,7 +20,7 @@ export class HeroService {
     return this.http.get<Hero[]>(this.heroesUrl)
       .pipe(
         tap(heroes => this.log('fetched heroes')),
-        catchError(this.handleError('fetched heroes', []))
+        catchError(this.handleError('getHeroes', []))
       );
   }
 
@@ -28,7 +28,7 @@ export class HeroService {
     return this.http.get<Hero>(this.heroesUrl + '/' + id)
       .pipe(
         tap(_ => this.log(`fetched hero id=${id}`)),
-        catchError(this.handleError<Hero>(`fetched hero id=${id}`))
+        catchError(this.handleError<Hero>(`getHero id=${id}`))
       );
   }
 
