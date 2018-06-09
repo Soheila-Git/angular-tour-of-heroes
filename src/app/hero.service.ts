@@ -25,7 +25,8 @@ export class HeroService {
   }
 
   getHero(id: number): Observable<Hero> {
-    return this.http.get<Hero>(this.heroesUrl + '/' + id)
+    const url = `${this.heroesUrl}/${id}`;
+    return this.http.get<Hero>(url)
       .pipe(
         tap(_ => this.log(`fetched hero id=${id}`)),
         catchError(this.handleError<Hero>(`getHero id=${id}`))
